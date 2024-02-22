@@ -10,6 +10,8 @@ SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fno-exceptions ")
 ADD_EXECUTABLE(scgms ${scgms_srcs})
 
 target_compile_definitions(scgms PRIVATE WASM=1)
+target_compile_definitions(scgms PRIVATE EMBEDDED=1)
+
 
 target_include_directories(scgms PRIVATE "sources" )
 target_include_directories(scgms PRIVATE "sources/scgms" )
