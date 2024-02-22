@@ -15,6 +15,7 @@ target_compile_definitions(scgms PRIVATE EMBEDDED=1)
 
 target_include_directories(scgms PRIVATE "sources" )
 target_include_directories(scgms PRIVATE "sources/scgms" )
+target_include_directories(scgms PRIVATE "sources/filters" )
 
 target_link_options(scgms PUBLIC "-Wl,--export=push_event")
 #target_link_options(scgms PUBLIC "-Wl,--export=main")
