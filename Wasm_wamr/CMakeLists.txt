@@ -3,7 +3,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 
 PROJECT(scgms_wasm CXX C ASM)
 
-FILE(GLOB_RECURSE scgms_srcs "sources/*.c" "sources/*.cpp" "sources/.h")
+FILE(GLOB_RECURSE scgms_srcs "main.cpp" "sources/*.c" "sources/*.cpp" "sources/.h")
 
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fno-exceptions ")
 
