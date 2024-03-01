@@ -3,9 +3,8 @@
 
 SET(CMAKE_SYSTEM_NAME Linux)
 
-if (NOT DEFINED WASI_SDK_DIR)
-    SET (WASI_SDK_DIR               "/opt/wasi-sdk")
-endif ()
+SET(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}")
+INCLUDE(wasi_path)
 
 SET (CMAKE_C_COMPILER               "${WASI_SDK_DIR}/bin/clang")
 SET (CMAKE_CXX_COMPILER             "${WASI_SDK_DIR}/bin/clang++")

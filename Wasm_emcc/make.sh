@@ -1,6 +1,4 @@
-cd ~/emsdk
-source ./emsdk_env.sh
-cd -
+source emcc.sh
 
 mkdir -p build >/dev/null 2>&1
 cd build
