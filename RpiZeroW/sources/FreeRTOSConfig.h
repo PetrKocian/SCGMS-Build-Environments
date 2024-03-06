@@ -84,14 +84,27 @@
 #define configUSE_TICK_HOOK			0
 #define configCPU_CLOCK_HZ			( ( unsigned long ) 24000000 )	
 #define configTICK_RATE_HZ			( ( portTickType ) 1000 )
-#define configMAX_PRIORITIES		( ( unsigned portBASE_TYPE ) 5 )
+#define configMAX_PRIORITIES		( 5 )
 #define configMINIMAL_STACK_SIZE	( ( unsigned short ) 128 )
-#define configTOTAL_HEAP_SIZE		( ( size_t ) ( 4096 ) )
+#define configTOTAL_HEAP_SIZE		( ( size_t ) ( 409600 ) )
 #define configMAX_TASK_NAME_LEN		( 16 )
 #define configUSE_TRACE_FACILITY	0
 #define configUSE_16_BIT_TICKS		0
 #define configIDLE_SHOULD_YIELD		1
 #define configUSE_APPLICATION_TASK_TAG	1
+#define configUSE_POSIX_ERRNO       1
+#define configSUPPORT_STATIC_ALLOCATION     1
+#define configUSE_COUNTING_SEMAPHORES 1
+#define configUSE_MUTEXES 1
+#define INCLUDE_eTaskGetState 1
+#define configUSE_TRACE_FACILITY 1
+#define configUSE_RECURSIVE_MUTEXES 1
+#define INCLUDE_xSemaphoreGetMutexHolder 1
+#define configUSE_TIMERS 1
+#define configTIMER_TASK_PRIORITY 1
+#define configTIMER_QUEUE_LENGTH 10
+#define configTIMER_TASK_STACK_DEPTH 1024
+#define configSTACK_DEPTH_TYPE                  uint32_t
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES 		0

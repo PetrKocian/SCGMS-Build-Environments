@@ -42,10 +42,23 @@ INCLUDE_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/sources/SmartCGMS/")
 INCLUDE_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/sources/filters/")
 INCLUDE_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/sources/")
 
+#POSIX INCLUDES
+INCLUDE_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/sources/FreeRTOS-POSIX/include")
+INCLUDE_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/sources/FreeRTOS-POSIX/include/private")
+INCLUDE_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/sources/FreeRTOS-POSIX/FreeRTOS-Plus-POSIX/include")
+INCLUDE_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/sources/FreeRTOS-POSIX/FreeRTOS-Plus-POSIX/include/portable")
+INCLUDE_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/sources/FreeRTOS-POSIX/FreeRTOS-Plus-POSIX/include/portable/Rpi")
+
+
 
 FILE(GLOB_RECURSE freertos_src  
     "sources/FreeRTOS/*.c"
     "sources/FreeRTOS/*.h"
+)
+
+FILE(GLOB_RECURSE posix_src  
+    "sources/FreeRTOS-POSIX/*.c"
+    "sources/FreeRTOS-POSIX/*.h"
 )
 
 FILE(GLOB_RECURSE scgms
@@ -66,7 +79,7 @@ FILE(GLOB_RECURSE drivers
     "sources/Rpi/*.h"
 )
 
-ADD_EXECUTABLE(freertos "sources/main.c" ${freertos_src} ${drivers} ${scgms} ${filters})
+ADD_EXECUTABLE(freertos "sources/main.c" ${freertos_src} ${posix_src} ${drivers} ${scgms} ${filters})
 set_property(TARGET freertos PROPERTY CXX_STANDARD 17)
 
 target_compile_definitions(freertos PRIVATE FREERTOS=1)

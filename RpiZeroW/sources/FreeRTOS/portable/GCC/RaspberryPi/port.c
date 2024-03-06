@@ -220,7 +220,7 @@ void vPortEndScheduler( void )
  */
 void vTickISR (unsigned int nIRQ, void *pParam)
 {
-	vTaskIncrementTick();
+	xTaskIncrementTick();
 
 	#if configUSE_PREEMPTION == 1
 	vTaskSwitchContext();
