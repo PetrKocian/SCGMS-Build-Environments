@@ -42,29 +42,29 @@ INCLUDE_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/sources/filters")
 
 
 FILE(GLOB_RECURSE freertos_src  
-    "FreeRTOS/*.c"
-    "FreeRTOS/*.h"
+    "sources/FreeRTOS/*.c"
+    "sources/FreeRTOS/*.h"
 )
 
 FILE(GLOB_RECURSE scgms
-     "SmartCGMS/*.h"
-     "SmartCGMS/*.cpp"
-     "SmartCGMS/*.c"
+     "sources/SmartCGMS/*.h"
+     "sources/SmartCGMS/*.cpp"
+     "sources/SmartCGMS/*.c"
 )
 
 FILE(GLOB_RECURSE filters
-     "filters/*.h"
-     "filters/*.cpp"
-     "filters/*.c"
+     "sources/filters/*.h"
+     "sources/filters/*.cpp"
+     "sources/filters/*.c"
 )
 
 FILE(GLOB_RECURSE drivers  
-    "Rpi/*.c"
-    "Rpi/*.s"
-    "Rpi/*.h"
+    "sources/Rpi/*.c"
+    "sources/Rpi/*.s"
+    "sources/Rpi/*.h"
 )
 
-ADD_EXECUTABLE(freertos "main.c" ${freertos_src} ${drivers} ${scgms} ${filters})
+ADD_EXECUTABLE(freertos "sources/main.c" ${freertos_src} ${drivers} ${scgms} ${filters})
 set_property(TARGET freertos PROPERTY CXX_STANDARD 17)
 
 target_compile_definitions(freertos PRIVATE FREERTOS=1)
