@@ -78,7 +78,7 @@ FILE(GLOB_RECURSE drivers
 )
 
 ADD_EXECUTABLE(freertos "sources/main.c" ${freertos_src} ${drivers}  ${posix_src} ${scgms} ${filters})
-#set_property(TARGET freertos PROPERTY CXX_STANDARD 17)
+set_property(TARGET freertos PROPERTY CXX_STANDARD 17)
 
 target_compile_definitions(freertos PRIVATE FREERTOS=1)
 target_compile_definitions(freertos PRIVATE EMBEDDED=1)
