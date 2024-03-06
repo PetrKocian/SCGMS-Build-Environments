@@ -1,5 +1,5 @@
-#include <FreeRTOS.h>
-#include <task.h>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
 #include <scgms.h>
 #include <uart_print.h>
 
