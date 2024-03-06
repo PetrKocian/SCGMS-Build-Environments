@@ -19,6 +19,18 @@ void task2(void *pParam) {
 	}
 }
 
+void taskscg(void *pParam) {
+	vTaskDelay(3000);
+    	build_filter_chain(NULL);
+	create_level_event(10);
+	while(1)
+	{
+		print("task scgms run ");
+		vTaskDelay(2000);
+	}
+}
+
+
 void task1(void *pParam) {
 static pthread_t xTxTask;
 static pthread_attr_t xTxAttr;
@@ -34,6 +46,8 @@ static pthread_attr_t xRxAttr;
 
 	struct sched_param xTxSchedParam = {.sched_priority = sched_get_priority_min(0),}; /* The task runs at the idle priority */
 	struct sched_param xRxSchedParam = {.sched_priority = sched_get_priority_min(0) + 1,}; /* The task runs at a higher priority */
+	pthread_attr_setstacksize( &xRxAttr , 32*1024);
+
 
 	iret = pthread_attr_setschedparam(	&xTxAttr,
 										&xTxSchedParam );
@@ -50,7 +64,7 @@ static pthread_attr_t xRxAttr;
 
 	iret = pthread_create(	&xRxTask,
 							&xRxAttr,	/* The thread attributes. */
-							task2,	/* The function that implements the thread. */
+							taskscg,	/* The function that implements the thread. */
 							NULL );		/* The task parameter is not used, so set to NULL. */
 	configASSERT( !iret );
 	while(1) {
