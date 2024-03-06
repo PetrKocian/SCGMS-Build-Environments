@@ -1,4 +1,4 @@
-#include "sources/scgms.h"
+#include "smartcgms_sources/scgms.h"
 #include "unistd.h"
 #include "stdlib.h"
 
