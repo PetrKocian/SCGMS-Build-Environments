@@ -6,6 +6,9 @@ SET(LINKER_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/sources/Rpi/raspberrypi.ld")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+SET(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}")
+INCLUDE(arm_none_eabi)
+
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0" )
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g" )
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall" )
@@ -21,11 +24,6 @@ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g" )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=armv6zk" )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mtune=arm1176jzf-s" )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions" )
-
-
-set(CMAKE_C_COMPILER "/usr/lib/arm-none-eabi-new/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc")
-set(CMAKE_ASM_COMPILER "/usr/lib/arm-none-eabi-new/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc")
-set(CMAKE_CXX_COMPILER "/usr/lib/arm-none-eabi-new/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-g++")
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -L /usr/lib/gcc/arm-none-eabi/6.3.1 -lgcc")
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T ${LINKER_SCRIPT}")
