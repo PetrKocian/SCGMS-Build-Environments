@@ -3,9 +3,9 @@
 
 extern "C" {
 EMSCRIPTEN_KEEPALIVE
-void push_event(int l)
+void push_event(int level)
 {
-    create_level_event(l);
+    create_level_event(level);
 }
 }
 
@@ -17,20 +17,16 @@ const char* get_config()
 }
 }
 
-
-char conf[10000];
-
 extern "C" {
 EMSCRIPTEN_KEEPALIVE
-void build_chain(const char* s)
+void build_chain(const char* conf)
 {
-    if(strcmp(s,"") == 0)
+    if(strcmp(conf,"") == 0)
     {
         build_filter_chain(nullptr);
     }
     else
     {
-        std::memcpy(conf, s, 10000);
         build_filter_chain(conf);
     }
 }
