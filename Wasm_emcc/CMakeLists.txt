@@ -3,7 +3,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 
 PROJECT(scgms_wasm CXX C ASM)
 
-SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -s PTHREAD_POOL_SIZE=3")
+SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s \"EXPORTED_RUNTIME_METHODS=['stringToNewUTF8', 'intArrayFromString', 'UTF8ToString']\"")
 
 FILE(GLOB_RECURSE scgms_srcs "main.cpp" "smartcgms_sources/*.c" "smartcgms_sources/*.cpp" "smartcgms_sources/*.h")
 
