@@ -1,11 +1,20 @@
 #include "smartcgms_sources/scgms.h"
 #include <emscripten.h>
+#include <string>
 
 extern "C" {
 EMSCRIPTEN_KEEPALIVE
 void push_event(int level)
 {
     create_level_event(level);
+}
+}
+
+extern "C" {
+EMSCRIPTEN_KEEPALIVE
+void shutdown()
+{
+    create_shutdown_event();
 }
 }
 
