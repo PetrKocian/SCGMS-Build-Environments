@@ -79,6 +79,7 @@ ADD_EXECUTABLE(freertos "sources/main.c" ${freertos_src} ${drivers}  ${posix_src
 set_property(TARGET freertos PROPERTY CXX_STANDARD 17)
 
 target_compile_definitions(freertos PRIVATE FREERTOS=1)
+target_compile_definitions(freertos PRIVATE RPI=1)
 target_compile_definitions(freertos PRIVATE EMBEDDED=1)
 
 
