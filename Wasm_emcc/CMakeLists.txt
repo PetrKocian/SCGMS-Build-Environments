@@ -10,6 +10,7 @@ FILE(GLOB_RECURSE scgms_srcs "main.cpp" "smartcgms_sources/*.c" "smartcgms_sourc
 ADD_EXECUTABLE(scgms ${scgms_srcs})
 
 target_compile_definitions(scgms PRIVATE WASM=1)
+target_compile_definitions(scgms PRIVATE EMCC=1)
 target_compile_definitions(scgms PRIVATE EMBEDDED=1)
 target_compile_options(scgms PRIVATE -pthread)
 
