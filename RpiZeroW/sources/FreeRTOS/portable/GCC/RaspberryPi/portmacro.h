@@ -109,14 +109,6 @@ typedef unsigned long UBaseType_t;
 	not need to be guarded with a critical section. */
 	#define portTICK_TYPE_IS_ATOMIC 1
 #endif
-
-#if( configUSE_16_BIT_TICKS == 1 )
-	typedef unsigned portSHORT portTickType;
-	#define portMAX_DELAY ( portTickType ) 0xffff
-#else
-	typedef unsigned portLONG portTickType;
-	#define portMAX_DELAY ( portTickType ) 0xffffffff
-#endif
 /*-----------------------------------------------------------*/	
 
 /* Architecture specifics. */
