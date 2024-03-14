@@ -1,5 +1,6 @@
 #include "uart_print.h"
 #include "ftoa.h"
+#include "stdlib.h"
 
 #define PBASE 0x20000000
 
