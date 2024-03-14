@@ -1,4 +1,5 @@
 #include "uart_print.h"
+#include "ftoa.h"
 
 #define PBASE 0x20000000
 
@@ -90,6 +91,13 @@ const char* temp_string;
 void print_i(int i)
 {
     itoa(i, temp_string, 10);
+    print(temp_string);
+    temp_string = "";
+}
+
+void print_d(double d)
+{
+    ftoa(d, temp_string, -1); // guess precision from double value
     print(temp_string);
     temp_string = "";
 }
