@@ -87,7 +87,7 @@ void print(const char* ch)
 	uart_send(0x0A);
 }
 
-const char* temp_string;
+char* temp_string;
 
 void print_i(int i)
 {
