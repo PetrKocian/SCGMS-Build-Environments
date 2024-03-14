@@ -16,8 +16,10 @@ void __cxa_throw(void* ptr, void* type, void* destructor) {
 int main()
 {
     build_filter_chain(nullptr);
-    sleep(1);
-    create_level_event(12);
-    create_level_event(13);
-    create_level_event(15);
+    for(int i = 15; i < 45; i++)
+    {
+        create_level_event(i);
+        sleep(1);
+    }
+    create_shutdown_event();
 }
