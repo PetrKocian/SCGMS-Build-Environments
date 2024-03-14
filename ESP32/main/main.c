@@ -10,7 +10,6 @@ void app_main(void)
     build_filter_chain(NULL);
     while(1)
     {
-        create_level_event(10);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     };
 }
