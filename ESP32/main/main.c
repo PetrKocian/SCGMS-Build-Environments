@@ -5,8 +5,8 @@
 
 void app_main(void)
 {
-    printf("ESP32 SCGMS DEMO\r\n");
-    printf("------------------------------------------\r\n");
+    printf("ESP32 SCGMS DEMO\n");
+    printf("------------------------------------------\n");
     build_filter_chain(NULL);
     while(1)
     {
