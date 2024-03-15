@@ -1,6 +1,9 @@
 #include "uart_print.h"
 #include "ftoa.h"
 #include "stdlib.h"
+#include "stdbool.h"
+#include "freertos/FreeRTOS.h"
+#include "semphr.h"
 
 #define PBASE 0x20000000
 
@@ -22,6 +25,8 @@
 #define GPCLR0          (PBASE+0x00200028)
 #define GPPUD           (PBASE+0x00200094)
 #define GPPUDCLK0       (PBASE+0x00200098)
+
+SemaphoreHandle_t uartMutex;
 
 
 void write32(unsigned int address, unsigned int val)
@@ -64,6 +69,12 @@ void uart_init ( void )
     //for(ra=0;ra<150;ra++) dummy(ra);
     write32(GPPUDCLK0,0);
     write32(AUX_MU_CNTL_REG,3);
+
+    uartMutex = xSemaphoreCreateMutex();
+    if(uartMutex == NULL)
+    {
+        print("Uart mutex hasn't been created successfully, print statements will not be synchronized");
+    }
 }
 
 void uart_send ( unsigned int c )
@@ -75,16 +86,30 @@ void uart_send ( unsigned int c )
     write32(AUX_MU_IO_REG,c);
 }
 
+void print(const char * ch) {
+  bool printed = false;
+  if (uartMutex != NULL) {
+    if (xSemaphoreTake(uartMutex, portMAX_DELAY) == pdTRUE) {
+      while ( * ch != 0) {
+        uart_send((unsigned int) * ch);
+        ch++;
+      }
+      uart_send(0x0D);
+      uart_send(0x0A);
+      printed = true;
+      xSemaphoreGive(uartMutex);
 
-void print(const char* ch)
-{
-	while (*ch!=0)
-	{
-		uart_send((unsigned int)*ch);
-		ch++;
-	}
-	uart_send(0x0D);
-	uart_send(0x0A);
+    }
+  }
+  if (!printed) // print without locking
+  {
+    while ( * ch != 0) {
+      uart_send((unsigned int) * ch);
+      ch++;
+    }
+    uart_send(0x0D);
+    uart_send(0x0A);
+  }
 }
 
 char* temp_string;
